@@ -1,12 +1,13 @@
 <app-navbar></app-navbar>
 <div
-    class="app-container"
-    [class.sidenav-expanded]="getExpanded"
-    [class.sidenav-pinned]="getPinned"
+class="app-container"
+[class.sidenav-expanded]="getExpanded"
+[class.sidenav-pinned]="getPinned"
 >
-    <app-sidenav></app-sidenav>
-    <div class="app-header">
-        <app-breadcrumb></app-breadcrumb>
+<app-sidenav></app-sidenav>
+<div class="app-header">
+    <app-breadcrumb></app-breadcrumb>
+    <app-products-admin></app-products-admin>
     </div>
     <router-outlet></router-outlet>
 </div>
