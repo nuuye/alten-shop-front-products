@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Footer } from 'primeng/api';
 import { NavbarComponent } from './base/navbar/navbar.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductsAdminComponent } from './products/products-admin.component';
+import { ProductsComponent } from './product/products/products.component';
+import { ProductsAdminComponent } from './product/products-admin/products-admin.component';
 
 //define routes
 const routes: Routes = [

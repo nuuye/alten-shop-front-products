@@ -10,25 +10,25 @@ import { BaseModule } from 'app/base/base.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { TableModule } from 'primeng/table';
 import { DataViewModule } from 'primeng/dataview';
-import { ProductsModule } from "./products/products.module";
+import { ProductsModule } from "./product/products.module";
 
 @NgModule({
-    declarations: [AppComponent],
-    providers: [
-        { provide: LOCALE_ID, useValue: 'en' }
-    ],
-    bootstrap: [AppComponent],
-    imports: [
-        TableModule,
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        SharedModule,
-        BaseModule,
-        DataViewModule,
-        ProductsModule
-    ]
+  declarations: [AppComponent],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'en' }
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    TableModule,
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    BaseModule,
+    DataViewModule,
+    ProductsModule
+  ]
 })
 export class AppModule {
   constructor() {
