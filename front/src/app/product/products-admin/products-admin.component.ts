@@ -21,13 +21,8 @@ export class ProductsAdminComponent implements OnInit {
     this.productService.getProducts().subscribe(
       response => {
         this.products = response;
+        console.log(response);
       }
     )
   }
 }
-
-/*
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-    });
-*/

@@ -17,7 +17,6 @@ import { DynamicFormControlComponent } from './ui/dynamic-form-control/dynamic-f
 import { TableToolbarComponent } from './ui/table/table-toolbar/table-toolbar.component';
 import { TableFilterCellComponent } from './ui/table/table-filter-cell/table-filter-cell.component';
 import { TableActionsCellComponent } from './ui/table/table-actions-cell/table-actions-cell.component';
-import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,6 @@ import { TableModule } from 'primeng/table';
   ],
   imports: [
     CommonModule,
-    TableModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,

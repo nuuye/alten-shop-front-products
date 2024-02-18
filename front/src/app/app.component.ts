@@ -12,6 +12,7 @@ const TRANSPARENT_NAV_PAGES = ['login'];
 })
 export class AppComponent implements OnInit {
 
+  isAdminRoute: boolean = false;
   @HostBinding('class.transparent') transparent = false;
 
   constructor(
@@ -27,7 +28,6 @@ export class AppComponent implements OnInit {
   get getPinned(): boolean {
     return this.sidenavService.getPinned();
   }
-
   ngOnInit() {
 
   }

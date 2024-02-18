@@ -1,15 +1,14 @@
 <app-navbar></app-navbar>
 <div
-class="app-container"
-[class.sidenav-expanded]="getExpanded"
-[class.sidenav-pinned]="getPinned"
+    class="app-container"
+    [class.sidenav-expanded]="getExpanded"
+    [class.sidenav-pinned]="getPinned"
 >
-<app-sidenav></app-sidenav>
-<div class="app-header">
-    <app-breadcrumb></app-breadcrumb>
-    <app-products-admin></app-products-admin>
+    <app-sidenav></app-sidenav>
+    <div class="app-header">
+        <app-breadcrumb></app-breadcrumb>
     </div>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet> //dynamic routing
 </div>
 
 <p-toast position="bottom-center"></p-toast>

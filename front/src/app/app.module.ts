@@ -8,8 +8,6 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { AppComponent } from 'app/app.component';
 import { BaseModule } from 'app/base/base.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { TableModule } from 'primeng/table';
-import { DataViewModule } from 'primeng/dataview';
 import { ProductsModule } from "./product/products.module";
 
 @NgModule({
@@ -19,14 +17,12 @@ import { ProductsModule } from "./product/products.module";
   ],
   bootstrap: [AppComponent],
   imports: [
-    TableModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     BaseModule,
-    DataViewModule,
     ProductsModule
   ]
 })
