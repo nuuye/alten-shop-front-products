@@ -20,18 +20,20 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product let-rowIndex="rowIndex" let-editing="editing">
-            <tr [ngClass]="rowIndex % 2 === 0 ? 'odd-row' : ''">
+            <tr [pEditableRow]="product" [ngClass]="rowIndex % 2 === 0 ? 'odd-row' : ''">
                 <td>
                     <p-tableCheckbox [value]="product"></p-tableCheckbox>
                 </td>
-                <p-cellEditor>
-                    <ng-template pTemplate="input">
-                        <input pInputText type="text" [(ngModel)]="product.code" />
-                    </ng-template>
-                    <ng-template pTemplate="output">
-                        {{ product.code }}
-                    </ng-template>
-                </p-cellEditor>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="product.code" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ product.code }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">

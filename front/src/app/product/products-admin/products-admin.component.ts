@@ -31,7 +31,6 @@ export class ProductsAdminComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (response: any) => {
         this.products = response.data;
-        console.log(response);
       }
     )
   }
