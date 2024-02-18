@@ -18,8 +18,8 @@ export class ProductsComponent implements OnInit {
   }
   getProductList() {
     this.productService.getProducts().subscribe(
-      response => {
-        this.products = response;
+      (response: any) => {
+        this.products = response.data;
       }
     )
   }
