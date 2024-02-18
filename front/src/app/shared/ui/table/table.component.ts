@@ -40,7 +40,7 @@ export class TableComponent<T> implements OnChanges {
   public creation: boolean;
   public ControlType = ControlType;
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     const { currentValue: config, previousValue: prevConfig } = changes.config ?? {};
@@ -54,7 +54,7 @@ export class TableComponent<T> implements OnChanges {
     }
   }
 
-  public onLazyLoad(event: LazyLoadEvent) {
+  public onLazyLoad(event: any) {
     const cleanEvent: TableLazyLoadEvent = {
       first: event.first,
       rows: event.rows,
@@ -67,7 +67,7 @@ export class TableComponent<T> implements OnChanges {
   }
 
   public onEdit(rowData: T): void {
-    this.editedEntry = {...rowData};
+    this.editedEntry = { ...rowData };
     this.creation = false;
     this.entryEditionDialogDisplayed = true;
   }
@@ -96,8 +96,8 @@ export class TableComponent<T> implements OnChanges {
     this.editedEntry = null;
     this.entryEditionDialogDisplayed = false;
   }
-  
-  public onDeleteEntry(id: number): void{
+
+  public onDeleteEntry(id: number): void {
     this.deleted.emit([id])
     this.entryEditionDialogDisplayed = false;
   }
@@ -110,7 +110,7 @@ export class TableComponent<T> implements OnChanges {
     this.selectedEntries = [];
   }
 
-  public export():void{
+  public export(): void {
     this.exportDialogDisplay = true;
   }
 
@@ -140,7 +140,7 @@ export class TableComponent<T> implements OnChanges {
       case ControlType.TABLE: {
         return this.tableCellRenderer(cellValue);
       }
-      case ControlType.SELECT: {        
+      case ControlType.SELECT: {
         return this.selectCellRenderer(cellValue, control);
       }
       case ControlType.MULTISELECT: {
@@ -161,7 +161,7 @@ export class TableComponent<T> implements OnChanges {
   private tableCellRenderer(cellValue: unknown): string {
     return this.isCellArray(cellValue) ? cellValue.length.toString() : '';
   }
-  
+
   private selectCellRenderer(cellValue: unknown, column: CrudItemOptions): string {
     const option = this.getOption(column, cellValue);
     if (!option) return '';
@@ -170,7 +170,7 @@ export class TableComponent<T> implements OnChanges {
 
   private multiselectCellRenderer(cellValue: unknown, column: CrudItemOptions, tooltip: boolean): string {
     if (this.isCellArray(cellValue)) {
-      const separator = tooltip ? ', ': '';
+      const separator = tooltip ? ', ' : '';
       let values = cellValue.map(val => this.getOption(column, val)).filter(val => !!val);
       return values.map(val => {
         if (val.styleClass && !tooltip) {

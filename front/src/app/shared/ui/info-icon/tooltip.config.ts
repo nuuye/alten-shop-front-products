@@ -1,5 +1,5 @@
-import { TooltipOptions } from "primeng/tooltip";
+import { TooltipModule } from "primeng/tooltip";
 
-export const TOOLTIP_CONFIG: TooltipOptions = {
-  tooltipPosition: 'top'
+export const TOOLTIP_CONFIG = {
+  position: 'top'
 };

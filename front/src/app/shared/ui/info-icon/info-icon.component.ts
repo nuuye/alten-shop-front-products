@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { TOOLTIP_CONFIG } from 'app/shared/ui/info-icon/tooltip.config';
 
+
 @Component({
   selector: 'app-info-icon',
   templateUrl: './info-icon.component.html',
@@ -8,7 +9,7 @@ import { TOOLTIP_CONFIG } from 'app/shared/ui/info-icon/tooltip.config';
 })
 export class InfoIconComponent {
   @Input() message: string;
-  @Input() position: string = TOOLTIP_CONFIG.tooltipPosition;
+  @Input() position: string = TOOLTIP_CONFIG.position;
   @Input() icon = 'info-circle';
   // showDelay: number;
   // hideDelay: number;

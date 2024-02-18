@@ -5,6 +5,8 @@ import { PrimeNGConfig, SelectItem } from 'primeng/api';
 import { DataView } from 'primeng/dataview';
 import { debounceTime } from 'rxjs/operators';
 import { ListService } from './list.service';
+import { DataViewLazyLoadEvent } from 'primeng/dataview';
+import { CheckboxChangeEvent } from 'primeng/checkbox';
 
 export interface ListHeaderOptionsBase {
   search: string;
@@ -45,7 +47,7 @@ export class ListComponent<T> implements OnInit {
   // Search performed by backend
   @Input() public readonly backEndSearch: boolean;
 
-  @Output() pageChanged: EventEmitter<PaginationEvent> = new EventEmitter();
+  @Output() pageChanged: EventEmitter<DataViewLazyLoadEvent> = new EventEmitter<DataViewLazyLoadEvent>();
   @Output() filtered: EventEmitter<SearchParams> = new EventEmitter();
   @Output() addClicked: EventEmitter<void> = new EventEmitter();
   @Output() deleteClicked: EventEmitter<T[]> = new EventEmitter();
@@ -56,7 +58,7 @@ export class ListComponent<T> implements OnInit {
   public sortCtrl: FormControl = new FormControl('');
   public searchCtrl: FormControl = new FormControl('');
   public dateRangeCtrl: FormControl = new FormControl([new Date(), new Date()]);
-  public selection: (T&{id})[] = [];
+  public selection: (T & { id })[] = [];
 
   private firstLoad = true;
 
@@ -114,13 +116,14 @@ export class ListComponent<T> implements OnInit {
     this.dateRangeCtrl.setValue([from, to], { emitEvent: false });
   }
 
-  public selectItem({ checked }, item: T&{id}) {
+  public selectItem({ checked }: CheckboxChangeEvent, item: T & { id }) {
     if (checked) {
       this.selection.push(item);
     } else {
       this.selection = this.selection.filter(s => s.id !== item.id);
     }
   }
+  
 
   public onDeleteSelection(): void {
     this.deleteSelection();
@@ -130,7 +133,7 @@ export class ListComponent<T> implements OnInit {
     this.deleteClicked.emit(this.selection);
   }
 
-  public onPageChange(event: PaginationEvent) {
+  public onPageChange(event: DataViewLazyLoadEvent) {
     if (!this.firstLoad) {
       this.storeSearchParams({ first: event.first, rows: event.rows });
       this.pageChanged.emit(event);
