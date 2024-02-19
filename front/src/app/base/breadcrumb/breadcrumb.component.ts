@@ -17,6 +17,9 @@ export class BreadcrumbComponent implements OnInit {
   public items: MenuItem[] = [];
   private readonly sidenavItems: SidenavItem[] = SIDENAV_ITEMS;
   private homeItem: MenuItem = { label: 'Home', routerLink: '/' };
+  private productItem: MenuItem = { label: 'Products', routerLink: '/products' };
+  private adminItem: MenuItem = { label: 'Admin', routerLink: '/admin' };
+
 
   constructor(
     private readonly sidenavService: SidenavService,
@@ -34,6 +37,7 @@ export class BreadcrumbComponent implements OnInit {
     ).subscribe((url) => {
       this.buildBreadcrumb(url);
     });
+
   }
 
   private buildBreadcrumb(path: string): void {
