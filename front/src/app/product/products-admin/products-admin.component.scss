@@ -1,13 +1,21 @@
-.table-container {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    max-width: 80rem;
-    align-items: center;
-    .odd-row {
-        background-color: rgba(229, 229, 229, 0.263);
+.adminContainer {
+    .controlBar {
+        margin-left: 15px;
+        margin-top: 15px;
+        display: flex;
+        gap: 15px;
     }
-    .p-datatable-gridlines {
-        width: 100%;
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        max-width: 80rem;
+        align-items: center;
+        .odd-row {
+            background-color: rgba(229, 229, 229, 0.263);
+        }
+        .p-datatable-gridlines {
+            width: 100%;
+        }
     }
 }

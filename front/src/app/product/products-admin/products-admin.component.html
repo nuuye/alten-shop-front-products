@@ -1,100 +1,108 @@
-<div class="table-container">
-    <p-table
-        [value]="products"
-        styleClass="p-datatable-gridlines"
-        class="p-datatable-gridlines"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [paginator]="true"
-        dataKey="code"
-        [(selection)]="selectedProducts"
-        editMode="row"
-        [globalFilterFields]="['code', 'name']"
-    >
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width: 3rem">
-                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
-                <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
-                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>
-                    <p-columnFilter type="text" field="code"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="text" field="name"></p-columnFilter>
-                </th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product let-rowIndex="rowIndex" let-editing="editing">
-            <tr [pEditableRow]="product" [ngClass]="rowIndex % 2 === 0 ? 'odd-row' : ''">
-                <td>
-                    <p-tableCheckbox [value]="product"></p-tableCheckbox>
-                </td>
-                <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="product.code" />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ product.code }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td>
-                    <p-cellEditor>
-                        <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="product.name" required />
-                        </ng-template>
-                        <ng-template pTemplate="output">
-                            {{ product.name }}
-                        </ng-template>
-                    </p-cellEditor>
-                </td>
-                <td>
-                    <div class="flex align-items-center justify-content-center gap-2">
-                        <button
-                            *ngIf="!editing"
-                            pButton
-                            pRipple
-                            type="button"
-                            pInitEditableRow
-                            icon="pi pi-pencil"
-                            (click)="onRowEditInit(product)"
-                            class="p-button-rounded p-button-text"
-                        ></button>
-                        <button
-                            *ngIf="editing"
-                            pButton
-                            pRipple
-                            type="button"
-                            pSaveEditableRow
-                            icon="pi pi-check"
-                            (click)="onRowEditSave(product)"
-                            class="p-button-rounded p-button-text p-button-success mr-2"
-                        ></button>
-                        <button
-                            *ngIf="editing"
-                            pButton
-                            pRipple
-                            type="button"
-                            pCancelEditableRow
-                            icon="pi pi-times"
-                            (click)="onRowEditCancel(product, rowIndex)"
-                            class="p-button-rounded p-button-text p-button-danger"
-                        ></button>
-                    </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+<div class="adminContainer">
+    <div class="controlBar">
+        <p-button icon="pi pi-plus" label="New" severity="success"></p-button>
+        <p-button icon="pi pi-trash" label="Delete" [disabled]="true"></p-button>
+    </div>
 
+    <div class="table-container">
+        <p-table
+            [value]="products"
+            styleClass="p-datatable-gridlines"
+            class="p-datatable-gridlines"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [paginator]="true"
+            dataKey="code"
+            [(selection)]="selectedProducts"
+            editMode="row"
+            [globalFilterFields]="['code', 'name']"
+            [scrollable]="true"
+            scrollHeight="400px"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
+                    <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>
+                        <p-columnFilter type="text" field="code"></p-columnFilter>
+                    </th>
+                    <th>
+                        <p-columnFilter type="text" field="name"></p-columnFilter>
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product let-rowIndex="rowIndex" let-editing="editing">
+                <tr [pEditableRow]="product" [ngClass]="rowIndex % 2 === 0 ? 'odd-row' : ''">
+                    <td>
+                        <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="product.code" />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ product.code }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="product.name" required />
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ product.name }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td>
+                        <div class="flex align-items-center justify-content-center gap-2">
+                            <button
+                                *ngIf="!editing"
+                                pButton
+                                pRipple
+                                type="button"
+                                pInitEditableRow
+                                icon="pi pi-pencil"
+                                (click)="onRowEditInit(product)"
+                                class="p-button-rounded p-button-text"
+                            ></button>
+                            <button
+                                *ngIf="editing"
+                                pButton
+                                pRipple
+                                type="button"
+                                pSaveEditableRow
+                                icon="pi pi-check"
+                                (click)="onRowEditSave(product)"
+                                class="p-button-rounded p-button-text p-button-success mr-2"
+                            ></button>
+                            <button
+                                *ngIf="editing"
+                                pButton
+                                pRipple
+                                type="button"
+                                pCancelEditableRow
+                                icon="pi pi-times"
+                                (click)="onRowEditCancel(product, rowIndex)"
+                                class="p-button-rounded p-button-text p-button-danger"
+                            ></button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
 <!--
 problems: 
 [(selection)]="selectedProducts"                                    in table, selection not recognized
