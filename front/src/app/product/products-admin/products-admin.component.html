@@ -9,6 +9,7 @@
         dataKey="code"
         [(selection)]="selectedProducts"
         editMode="row"
+        [globalFilterFields]="['code', 'name']"
     >
         <ng-template pTemplate="header">
             <tr>
@@ -18,6 +19,16 @@
                 <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
                 <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
                 <th>Action</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <p-columnFilter type="text" field="code"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="name"></p-columnFilter>
+                </th>
+                <th></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product let-rowIndex="rowIndex" let-editing="editing">
