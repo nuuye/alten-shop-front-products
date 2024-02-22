@@ -1,10 +1,15 @@
-// .dataview-container {
-//     display: flex;
-//     flex-direction: column;
-//     padding: 15px;
-//     max-width: 80rem;
-// }
-.header-container{
+.dataview-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    padding: 15px;
+    max-width: 80rem;
+
+    .grid-nogutter {
+        height: 300px;
+        overflow-y: auto;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+    }
 }
